@@ -6,7 +6,7 @@ var rgb = "rgb(" + red + ", " + green + ", " + blue + ")";
 var squares = document.querySelectorAll(".square")
 
 squares.forEach(function (element) {
-    console.log(element + randomColor(255));
+    randomColor(255);
     element.style.background = rgb;
     // console.log(rgb);
     // element[index].style.background(rgb);
@@ -19,5 +19,3 @@ function randomColor(max) {
     rgb = "rgb(" + red + ", " + green + ", " + blue + ")";
     return rgb;
 }
-
-randomColor(255);
