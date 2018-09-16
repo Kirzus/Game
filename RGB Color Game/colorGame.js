@@ -3,12 +3,20 @@ var green = 0;
 var blue = 0;
 
 var rgb = "rgb(" + red + ", " + green + ", " + blue + ")";
+var squares = document.querySelectorAll(".square")
+
+squares.forEach(function (element) {
+    console.log(element + randomColor(255));
+    element.style.background = rgb;
+    // console.log(rgb);
+    // element[index].style.background(rgb);
+});
 
 function randomColor(max) {
-    var r = Math.floor(Math.random() * Math.floor(max));
-    var g = Math.floor(Math.random() * Math.floor(max));
-    var b = Math.floor(Math.random() * Math.floor(max));
-    var rgb = "rgb(" + r + ", " + g + ", " + b + ")";
+    red = Math.floor(Math.random() * Math.floor(max));
+    green = Math.floor(Math.random() * Math.floor(max));
+    blue = Math.floor(Math.random() * Math.floor(max));
+    rgb = "rgb(" + red + ", " + green + ", " + blue + ")";
     return rgb;
 }
 
