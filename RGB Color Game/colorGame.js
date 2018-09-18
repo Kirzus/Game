@@ -10,15 +10,37 @@ var resetBtn = document.querySelector("#reset");
 var correctRgb;
 //Player found correct color
 var gameWin = false;
+//Default difficulty x squares
+var difficulty = 6; 
 
 //App
 function gameApp() {
     difficultyMode();
     event();
-    reset();
+    reset(difficulty);
 }
-
+//Difficulty Mode 
 function difficultyMode() {
+    easyBtn.addEventListener("click", function() {
+        //Set difficulty to 3 squares
+        difficulty = 3;
+        //Add hide class on 3 end/bottom squares 
+        for (i = 3; i < 6; i++) {
+            squares[i].classList.add("hide");
+        }
+        //Pass in difficulty level and reset 
+        reset(difficulty);
+    });
+    hardBtn.addEventListener("click", function() {
+        //Set difficulty to 3 squares
+        difficulty = 6;
+        //Remove hide class on hidden squares if any 
+        for (i = 3; i < 6; i++) {
+            squares[i].classList.remove("hide");
+        }
+        //Pass in difficulty level and reset 
+        reset(difficulty);
+    });
 }
 
 function event() {
@@ -40,16 +62,16 @@ function event() {
     }
 }
 
-function reset() {
+function reset(num) {
     //Text Displays
+    result.textContent = "";
     resetBtn.textContent = "New colors"; 
     displayHeader.style.background = "rgb(0, 132, 255)";
     //Set a random correct square
-    var randomRgb = randomSquare(6);
+    var randomRgb = randomSquare(num);
     correctRgb = squares[randomRgb];
-    for (i = 0; i < squares.length; i++) {
+    for (i = 0; i < num; i++) {
         randomColor();
-        // squares[i].setAttribute("style", "background: " + rgb);
         squares[i].style.background = rgb;
         displayRgb.textContent = correctRgb.style.background;
         console.log(randomRgb); // DEBUG
@@ -57,7 +79,7 @@ function reset() {
 }
 //Reset the game on clicking reset button
 resetBtn.addEventListener("click", function() {
-    reset();
+    reset(difficulty);
 })
 
 //Randomize colors from 0 to 255 and return a rgb() string
@@ -70,7 +92,7 @@ function randomColor() {
 
 //Display colors across all squares
 function allColorsDisplay() {
-    for (i = 0; i < squares.length; i++) {
+    for (i = 0; i < difficulty; i++) {
         squares[i].classList.remove("hide");
         squares[i].setAttribute("style", "background: " + correctRgb.style.background);
         //Remove current header style
