@@ -1,7 +1,7 @@
 //Storing dom queries
 var squares = document.querySelectorAll(".square");
 var displayRgb = document.querySelector("#rgb");
-var displayHeader = document.querySelector(".color");
+var displayHeader = document.querySelector("header");
 var result = document.querySelector("#result");
 var easyBtn = document.querySelector("#easy");
 var hardBtn = document.querySelector("#hard");
