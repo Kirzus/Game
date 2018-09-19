@@ -20,21 +20,23 @@ h1 {
 }
 
 .rgb {
-    font-size: 64px;
+    font-size: 72px;
 }
 
 .nav-container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     background: white;
 }
 
 .navbar {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: 120px 1fr 50% repeat(2,1fr);
     grid-template-rows: 1fr;
     justify-items: center;
-    width: 70%;
+    margin: 0em 1em;
+    width: 625px;
     color: black;
 }
 
@@ -42,7 +44,34 @@ h1 {
     grid-column: 1;
 }
 
+.grow {
+    color: white;
+    background-color: rgb(0, 102, 197);
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: grow;
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(1.0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1.0);
+    }
+}
+
 .result {
+    margin: 9px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 0;
     grid-column: 3;
 }
 
@@ -53,6 +82,28 @@ h1 {
 
 .hard {
     grid-column: 5;
+    justify-self: start;
+}
+
+button {
+    cursor: pointer;
+    border: 0px;
+    background: white;
+    padding: 10px 1em;
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(0, 102, 197);
+}
+
+button:hover {
+    background: rgb(0, 102, 197);
+    color: white;
+}
+
+/* JS for btn to stay hovered to display current difficulty */
+.hovered {
+    background: rgb(0, 102, 197);
+    color: white;
 }
 
 .hide {
@@ -69,7 +120,7 @@ h1 {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(3,180px);
+    grid-template-columns: repeat(3, 180px);
     grid-column-gap: 2em;
     justify-items: center;
 }
@@ -80,10 +131,62 @@ h1 {
     margin: 1em 0em;
     background-color: rgb(30, 30, 30);
     border-radius: 10%;
-    transition-duration: 0.3s;
+    transition-duration: 0.5s;
     transition-property: transform display;
 }
 
 .square:hover {
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    button {
+        padding: 1em 10px;
+        margin: 0;
+    }
+
+    .rgb {
+        font-size: 9vw;
+    }
+
+    .navbar {
+        grid-template-columns: minmax(110px,1fr) minmax(100px, 100%) repeat(2, 1fr);
+        margin: 0;
+        width: 100%;
+    }
+
+    .reset {
+        justify-self: start;
+    }
+
+    .result {
+        grid-column: 2;
+        align-self: center;
+    }
+
+    .easy {
+        grid-column: 3;
+    }
+
+    .hard {
+        grid-column: 4;
+    }
+    .container {
+        grid-template-columns: repeat(3, 25vw);
+    }
+
+    .square {
+        height: 25vw;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .rgb {
+        font-size: 40px;
+    }
 }

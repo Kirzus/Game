@@ -52,11 +52,14 @@ function event() {
             if (clickedColor === correctRgb.style.background){
                 allColorsDisplay();
                 result.textContent = "Correct !";
+                result.style.color = "rgb(0, 102, 197)";
                 resetBtn.textContent = "Reset"; 
+                resetBtn.classList.add("grow");
                 gameWin = true;
             } else {
                 this.removeAttribute("style");
                 result.textContent = "Try Again";
+                result.style.color = "red";
             }
         });
     }
@@ -66,7 +69,16 @@ function reset(num) {
     //Text Displays
     result.textContent = "";
     resetBtn.textContent = "New colors"; 
-    displayHeader.style.background = "rgb(0, 132, 255)";
+    displayHeader.style.background = "rgb(0, 102, 197)";
+    resetBtn.classList.remove("grow");
+    // 
+    if (difficulty === 6) {
+        easyBtn.classList.remove("hovered");
+        hardBtn.classList.add("hovered");
+    } else if (difficulty === 3) {
+        hardBtn.classList.remove("hovered");
+        easyBtn.classList.add("hovered");
+    }
     //Set a random correct square
     var randomRgb = randomSquare(num);
     correctRgb = squares[randomRgb];
