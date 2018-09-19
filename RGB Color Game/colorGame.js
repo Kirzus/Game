@@ -53,7 +53,7 @@ function event() {
                 allColorsDisplay();
                 result.textContent = "Correct !";
                 result.style.color = "rgb(0, 102, 197)";
-                resetBtn.textContent = "Reset"; 
+                resetBtn.textContent = "Reset ?"; 
                 resetBtn.classList.add("grow");
                 gameWin = true;
             } else {
@@ -71,7 +71,7 @@ function reset(num) {
     resetBtn.textContent = "New colors"; 
     displayHeader.style.background = "rgb(0, 102, 197)";
     resetBtn.classList.remove("grow");
-    // 
+    //Add and remove hovered class styling depending on current difficulty
     if (difficulty === 6) {
         easyBtn.classList.remove("hovered");
         hardBtn.classList.add("hovered");
